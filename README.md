@@ -26,5 +26,11 @@ laravel new
 composer install
 ```
 
+## 書き込み権限付与
+```
+# phpコンテナで
+chmod 777 -R /var/www/storage
+```
+
 
 [link1]:https://qiita.com/A-Kira/items/1c55ef689c0f91420e81
