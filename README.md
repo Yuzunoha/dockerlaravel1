@@ -11,4 +11,4 @@
 `$ laravel new`
 
 
-[link1]:[https://qiita.com/A-Kira/items/1c55ef689c0f91420e81]
+[link1]:https://qiita.com/A-Kira/items/1c55ef689c0f91420e81
