@@ -22,3 +22,7 @@ Route::get('test', function () {
 Route::get('test/test', function () {
     return 'Hello world!このパスはtest/testです';
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
