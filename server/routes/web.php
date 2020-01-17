@@ -18,11 +18,3 @@ Route::get('/', function () {
 Route::get('test', function () {
     return 'Hello world!あああ';
 });
-
-Route::get('test/test', function () {
-    return 'Hello world!このパスはtest/testです';
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
