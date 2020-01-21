@@ -1,0 +1,28 @@
+https://teachapi.herokuapp.com/sign_up
+
+失敗
+request
+	method: "POST"
+	headers:
+	Content-Type: "application/json"
+	Authorization: "Bearer undefined"
+	body: "{"sign_up_user_params":{"name":"","bio":"","email":"","password":"","password_confirmation":""}}"
+response
+	messages: ["Validation failed: Name can't be blank, Bio can't be blank, Password can't be blank"]
+
+成功
+request
+  method: "POST"
+  headers:
+	Content-Type: "application/json"
+	Authorization: "Bearer undefined"
+  body: "{"sign_up_user_params":{"name":"c","bio":"c","emai…c@c","password":"c","password_confirmation":"c"}}"}
+response
+  id: 794
+  name: "c"
+  bio: "c"
+  token: "rGqZCnNDjZlzVpSl2FGk7gtt"
+  email: "c@c"
+  created_at: "2020-01-21T03:50:48.209Z"
+  updated_at: "2020-01-21T03:50:48.209Z"
+
