@@ -16,6 +16,6 @@ Route::get('/', function () {
 return view('welcome');
 });
  */
-Route::get('test', function () {
-    return 'Hello world!あああ';
+Route::get('/', function () {
+    return view('index');
 });
