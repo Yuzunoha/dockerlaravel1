@@ -11,10 +11,16 @@ class SignUpController extends Controller
      */
     public function post(Request $request)
     {
-        return [
-            'keyA' => 'valueA',
-            'keyB' => 'valueB',
-            'keyC' => 'valueC',
+        // このレスポンスで、正しい値にすればログインできる
+        $obj = [
+            "id" => 800,
+            "name" => "a",
+            "bio" => "a",
+            "token" => "YkVQrQEHkhGrr5vvNDBicQtt",
+            "email" => "a@a1",
+            "created_at" => "2020-01-23T10:22:22.460Z",
+            "updated_at" => "2020-01-23T10:22:22.460Z",
         ];
+        return $obj;
     }
 }
