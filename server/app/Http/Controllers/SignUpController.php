@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class SignUpController extends Controller
 {
@@ -56,8 +57,16 @@ class SignUpController extends Controller
         if (0 !== count($errMsgList)) {
             return ['error' => ['messages' => $errMsgList]];
         }
-        return ["result" => "エラーなし"];
 
+        /* ガード突破 */
+        // ユーザ新規登録
+        $user = User::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => Hash::make($password),
+            'api_token' => str_random(60),
+        ]);
+        return $user;
         // このレスポンスで、正しい値にすればログインできる
         /*
     $obj = [
