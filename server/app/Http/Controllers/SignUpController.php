@@ -45,12 +45,18 @@ class SignUpController extends Controller
             /* emailが登録済みである */
             $errMsgList[] = "email:${email}は既に登録されています";
         }
+
+        // ガード:passとpassconfが一致すること
+        if ($password != $password_confirmation) {
+            /* passとpassconfが一致しない */
+            $errMsgList[] = "passwordとpassword_confirmationが一致しません";
+        }
+
+        // エラーメッセージがが1つでもあればエラー
         if (0 !== count($errMsgList)) {
             return ['error' => ['messages' => $errMsgList]];
         }
         return ["result" => "エラーなし"];
-
-        // ガード:passとpassconfが一致すること
 
         // このレスポンスで、正しい値にすればログインできる
         /*
