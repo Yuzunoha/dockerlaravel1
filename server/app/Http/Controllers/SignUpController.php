@@ -41,7 +41,9 @@ class SignUpController extends Controller
             $errMsgList[] = "password_confirmationを入力してください";
         }
         if (0 !== count($errMsgList)) {
-            return ['error' => ['messages' => $errMsgList]];
+            $statusCode = 400; // 400 Bad Request
+            $obj = ['error' => ['messages' => $errMsgList]];
+            return response()->json($obj, $statusCode);
         }
 
         // ガード:emailが登録済みでないこと
@@ -58,7 +60,9 @@ class SignUpController extends Controller
 
         // エラーメッセージがが1つでもあればエラー
         if (0 !== count($errMsgList)) {
-            return ['error' => ['messages' => $errMsgList]];
+            $statusCode = 400; // 400 Bad Request
+            $obj = ['error' => ['messages' => $errMsgList]];
+            return response()->json($obj, $statusCode);
         }
 
         /* ガード突破 */
@@ -72,6 +76,7 @@ class SignUpController extends Controller
         ]);
 
         // 返却
+        $statusCode = 200; // 200 OK
         $obj = [
             "id" => $user->id,
             "name" => $user->name,
@@ -81,6 +86,6 @@ class SignUpController extends Controller
             "created_at" => $user->created_at,
             "updated_at" => $user->updated_at,
         ];
-        return $obj;
+        return response()->json($obj, $statusCode);
     }
 }
