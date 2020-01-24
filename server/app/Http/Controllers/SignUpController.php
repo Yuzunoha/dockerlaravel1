@@ -63,6 +63,7 @@ class SignUpController extends Controller
         $user = User::create([
             'name' => $name,
             'email' => $email,
+            'bio' => $bio,
             'password' => Hash::make($password),
             'api_token' => str_random(60),
         ]);
