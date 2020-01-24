@@ -66,18 +66,17 @@ class SignUpController extends Controller
             'password' => Hash::make($password),
             'api_token' => str_random(60),
         ]);
-        return $user;
-        // このレスポンスで、正しい値にすればログインできる
-        /*
-    $obj = [
-    "id" => 800,
-    "name" => "a",
-    "bio" => "a",
-    "token" => "YkVQrQEHkhGrr5vvNDBicQtt",
-    "email" => "a@a1",
-    "created_at" => "2020-01-23T10:22:22.460Z",
-    "updated_at" => "2020-01-23T10:22:22.460Z",
-    ];
-     */
+
+        // 返却
+        $obj = [
+            "id" => $user->id,
+            "name" => $user->name,
+            "bio" => $user->bio,
+            "token" => $user->api_token,
+            "email" => $user->email,
+            "created_at" => $user->created_at,
+            "updated_at" => $user->updated_at,
+        ];
+        return $obj;
     }
 }
