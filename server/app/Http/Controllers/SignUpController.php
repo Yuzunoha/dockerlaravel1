@@ -40,6 +40,9 @@ class SignUpController extends Controller
         } else {
             $errMsgList[] = "password_confirmationを入力してください";
         }
+        if (0 !== count($errMsgList)) {
+            return ['error' => ['messages' => $errMsgList]];
+        }
 
         // ガード:emailが登録済みでないこと
         if (User::where('email', $email)->first()) {
