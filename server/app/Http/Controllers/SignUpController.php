@@ -41,7 +41,7 @@ class SignUpController extends Controller
         }
 
         // ガード:emailが登録済みでないこと
-        if (User::where('email', $email)->find(1)) {
+        if (User::where('email', $email)->first()) {
             /* emailが登録済みである */
             $errMsgList[] = "email:${email}は既に登録されています";
         }
