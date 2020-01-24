@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class SignUpController extends Controller
@@ -38,27 +39,30 @@ class SignUpController extends Controller
         } else {
             $errMsgList[] = "password_confirmationを入力してください";
         }
-        if (0 !== count($errMsgList)) {
-            /* 空なパラメタがあった */
-            return ['error' => ['messages' => $errMsgList]];
-        }
-        return ["result" => "全部何かしら入っている"];
 
         // ガード:emailが登録済みでないこと
+        if (User::where('email', $email)->find(1)) {
+            /* emailが登録済みである */
+            $errMsgList[] = "email:${email}は既に登録されています";
+        }
+        if (0 !== count($errMsgList)) {
+            return ['error' => ['messages' => $errMsgList]];
+        }
+        return ["result" => "エラーなし"];
+
         // ガード:passとpassconfが一致すること
 
         // このレスポンスで、正しい値にすればログインできる
         /*
-        $obj = [
-        "id" => 800,
-        "name" => "a",
-        "bio" => "a",
-        "token" => "YkVQrQEHkhGrr5vvNDBicQtt",
-        "email" => "a@a1",
-        "created_at" => "2020-01-23T10:22:22.460Z",
-        "updated_at" => "2020-01-23T10:22:22.460Z",
-        ];
-         */
-        return ['a' => 'b'];
+    $obj = [
+    "id" => 800,
+    "name" => "a",
+    "bio" => "a",
+    "token" => "YkVQrQEHkhGrr5vvNDBicQtt",
+    "email" => "a@a1",
+    "created_at" => "2020-01-23T10:22:22.460Z",
+    "updated_at" => "2020-01-23T10:22:22.460Z",
+    ];
+     */
     }
 }
